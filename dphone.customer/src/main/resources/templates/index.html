@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Customer List</title>
+</head>
+<body>
+<div align="center">
+    <h1>Customer List</h1>
+ <!--   <a href="/new">Add New Referral</a>		-->
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Customer ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>email</th>
+                <th>mobile</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="referral : ${listCust}">
+                <td th:text="${referral.id}">Customer ID</td>
+                <td th:text="${referral.first_name}">First Name</td>
+                <td th:text="${referral.last_name}">Last Name</td>
+                <td th:text="${referral.email}">email</td>
+                <td th:text="${referral.mobile}">Mobile</td>
+                <td>
+                    <a th:href="@{/edit/{id}(id=${cust.id})}">Edit</a>
+                    
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{/delete/{id}(id=${cust.id})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>
