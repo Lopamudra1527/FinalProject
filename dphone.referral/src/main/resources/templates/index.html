@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Product Manager</title>
+</head>
+<body>
+<div align="center">
+    <h1>Referral List</h1>
+    <a href="/new">Add New Referral</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Referral ID</th>
+                <th>User ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>mobile</th>
+                <th>email</th>
+                <th>Points</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="referral : ${listReferrals}">
+                <td th:text="${referral.id}">Referral ID</td>
+                <td th:text="${referral.userid}">User ID</td>
+                <td th:text="${referral.first_name}">First Name</td>
+                <td th:text="${referral.last_name}">Last Name</td>
+                <td th:text="${referral.mobile}">Mobile</td>
+                <td th:text="${referral.email}">email</td>
+                <td th:text="${referral.referral_points}">Referral Points</td>
+                <td th:text="${referral.status}">Status</td>
+                <td>
+                    <a th:href="@{/edit/{id}(id=${referral.id})}">Edit</a>
+                    
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{/delete/{id}(id=${referral.id})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>
